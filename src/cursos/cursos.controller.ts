@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('cursos')
 export class CursosController {
@@ -10,5 +10,10 @@ export class CursosController {
       'Técnico em Redes de Computadores',
       'Técnico em Automação Industrial',
     ];
+  }
+
+  @Get(':name')
+  getCursoByName(@Param('name') name: string): string {
+    return `Informações sobre o curso técnico: ${name}`;
   }
 }
